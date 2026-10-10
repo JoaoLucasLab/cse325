@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/joaolucas/iCloud Drive (Arquivo)/Desktop/Documents/BYUI/2026/Fall 2026/dotNET/W01/ContosoPizza/ContosoPizza.csproj": {}
+    "/Users/joaolucas/iCloud Drive (Arquivo)/Desktop/Documents/BYUI/2026/Fall 2026/dotNET/W01/Submission/unit01/ContosoPizza/ContosoPizza.csproj": {}
   },
   "projects": {
-    "/Users/joaolucas/iCloud Drive (Arquivo)/Desktop/Documents/BYUI/2026/Fall 2026/dotNET/W01/ContosoPizza/ContosoPizza.csproj": {
+    "/Users/joaolucas/iCloud Drive (Arquivo)/Desktop/Documents/BYUI/2026/Fall 2026/dotNET/W01/Submission/unit01/ContosoPizza/ContosoPizza.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/joaolucas/iCloud Drive (Arquivo)/Desktop/Documents/BYUI/2026/Fall 2026/dotNET/W01/ContosoPizza/ContosoPizza.csproj",
+        "projectUniqueName": "/Users/joaolucas/iCloud Drive (Arquivo)/Desktop/Documents/BYUI/2026/Fall 2026/dotNET/W01/Submission/unit01/ContosoPizza/ContosoPizza.csproj",
         "projectName": "ContosoPizza",
-        "projectPath": "/Users/joaolucas/iCloud Drive (Arquivo)/Desktop/Documents/BYUI/2026/Fall 2026/dotNET/W01/ContosoPizza/ContosoPizza.csproj",
+        "projectPath": "/Users/joaolucas/iCloud Drive (Arquivo)/Desktop/Documents/BYUI/2026/Fall 2026/dotNET/W01/Submission/unit01/ContosoPizza/ContosoPizza.csproj",
         "packagesPath": "/Users/joaolucas/.nuget/packages/",
-        "outputPath": "/Users/joaolucas/iCloud Drive (Arquivo)/Desktop/Documents/BYUI/2026/Fall 2026/dotNET/W01/ContosoPizza/obj/",
+        "outputPath": "/Users/joaolucas/iCloud Drive (Arquivo)/Desktop/Documents/BYUI/2026/Fall 2026/dotNET/W01/Submission/unit01/ContosoPizza/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/joaolucas/.nuget/NuGet/NuGet.Config"
