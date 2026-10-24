@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/joaolucas/iCloud Drive (Arquivo)/Desktop/Documents/BYUI/2026/Fall 2026/dotNET/W01/Submission/unit02/MvcMovie/MvcMovie.csproj": {}
+    "/Users/joaolucas/iCloud Drive (Arquivo)/Desktop/Documents/BYUI/2026/Fall 2026/dotNET/group_project/cse325/unit02/MvcMovie/MvcMovie.csproj": {}
   },
   "projects": {
-    "/Users/joaolucas/iCloud Drive (Arquivo)/Desktop/Documents/BYUI/2026/Fall 2026/dotNET/W01/Submission/unit02/MvcMovie/MvcMovie.csproj": {
+    "/Users/joaolucas/iCloud Drive (Arquivo)/Desktop/Documents/BYUI/2026/Fall 2026/dotNET/group_project/cse325/unit02/MvcMovie/MvcMovie.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/joaolucas/iCloud Drive (Arquivo)/Desktop/Documents/BYUI/2026/Fall 2026/dotNET/W01/Submission/unit02/MvcMovie/MvcMovie.csproj",
+        "projectUniqueName": "/Users/joaolucas/iCloud Drive (Arquivo)/Desktop/Documents/BYUI/2026/Fall 2026/dotNET/group_project/cse325/unit02/MvcMovie/MvcMovie.csproj",
         "projectName": "MvcMovie",
-        "projectPath": "/Users/joaolucas/iCloud Drive (Arquivo)/Desktop/Documents/BYUI/2026/Fall 2026/dotNET/W01/Submission/unit02/MvcMovie/MvcMovie.csproj",
+        "projectPath": "/Users/joaolucas/iCloud Drive (Arquivo)/Desktop/Documents/BYUI/2026/Fall 2026/dotNET/group_project/cse325/unit02/MvcMovie/MvcMovie.csproj",
         "packagesPath": "/Users/joaolucas/.nuget/packages/",
-        "outputPath": "/Users/joaolucas/iCloud Drive (Arquivo)/Desktop/Documents/BYUI/2026/Fall 2026/dotNET/W01/Submission/unit02/MvcMovie/obj/",
+        "outputPath": "/Users/joaolucas/iCloud Drive (Arquivo)/Desktop/Documents/BYUI/2026/Fall 2026/dotNET/group_project/cse325/unit02/MvcMovie/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/joaolucas/.nuget/NuGet/NuGet.Config"
