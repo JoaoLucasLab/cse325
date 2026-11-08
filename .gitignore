@@ -1,0 +1,11 @@
+# .NET build output
+[Bb]in/
+[Oo]bj/
+
+# IDE / editor files
+.vs/
+*.user
+*.suo
+
+# macOS
+.DS_Store
