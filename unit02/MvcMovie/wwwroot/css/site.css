@@ -1,6 +1,17 @@
-html {
-  font-size: 14px;
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap');
+
+:root {
+  --ink: #17202a;
+  --muted: #68717d;
+  --cream: #f7f5f0;
+  --surface: #ffffff;
+  --line: #e4e1da;
+  --accent: #d95745;
+  --accent-dark: #b94435;
+  --navy: #142534;
 }
+
+html { font-size: 14px; }
 
 @media (min-width: 768px) {
   html {
@@ -18,7 +29,62 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+  margin: 0;
+  min-height: 100vh;
+  color: var(--ink);
+  background: var(--cream);
+  font-family: 'DM Sans', sans-serif;
+}
+
+h1, h2, h3, h4, .navbar-brand { font-family: 'Playfair Display', serif; }
+
+.site-header {
+  background: var(--navy);
+  box-shadow: 0 8px 24px rgba(20, 37, 52, .12);
+}
+
+.navbar { min-height: 76px; }
+.navbar-brand { display: inline-flex; align-items: center; gap: .65rem; color: #fff !important; font-size: 1.45rem; }
+.navbar-brand strong { color: #f2b26d; font-weight: 700; }
+.brand-mark { display: grid; place-items: center; width: 35px; height: 35px; border-radius: 10px; color: #fff; background: var(--accent); font-family: 'DM Sans', sans-serif; font-weight: 700; }
+.nav-link { color: rgba(255,255,255,.72) !important; font-weight: 600; padding: .7rem 1rem !important; }
+.nav-link:hover, .nav-link:focus { color: #fff !important; }
+.page-shell { padding-top: 3.25rem; padding-bottom: 5rem; }
+.footer { position: fixed; bottom: 0; width: 100%; padding: 1rem 0; background: var(--navy); font-size: .85rem; }
+.footer a { color: #f2b26d; }
+
+a { color: var(--accent-dark); font-weight: 600; text-decoration: none; }
+a:hover { color: var(--accent); text-decoration: underline; }
+.btn { border-radius: 9px; padding: .65rem 1.05rem; font-weight: 700; }
+.btn-primary { color: #fff; background: var(--accent); border-color: var(--accent); }
+.btn-primary:hover, .btn-primary:focus { color: #fff; background: var(--accent-dark); border-color: var(--accent-dark); }
+.btn-danger { background: #a83c45; border-color: #a83c45; }
+.form-control, .form-select { border: 1px solid var(--line); border-radius: 9px; padding: .7rem .85rem; }
+.form-control:focus, .form-select:focus { border-color: var(--accent); box-shadow: 0 0 0 .2rem rgba(217,87,69,.15); }
+.control-label, label { color: var(--muted); font-size: .82rem; font-weight: 700; letter-spacing: .02em; }
+.validation-summary-errors, .field-validation-error { color: #a83c45 !important; font-size: .88rem; }
+
+.content-heading { margin-bottom: 2rem; }
+.eyebrow { margin-bottom: .45rem; color: var(--accent); font-size: .76rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; }
+.content-heading h1 { margin-bottom: .35rem; font-size: clamp(2.1rem, 4vw, 3.2rem); }
+.subtitle { color: var(--muted); }
+.surface-card { padding: 1.5rem; border: 1px solid var(--line); border-radius: 18px; background: var(--surface); box-shadow: 0 14px 35px rgba(20,37,52,.06); }
+.table-shell { overflow: hidden; padding: 0; border: 1px solid var(--line); border-radius: 16px; background: var(--surface); box-shadow: 0 14px 35px rgba(20,37,52,.06); }
+.table { margin-bottom: 0; }
+.table thead th { border-bottom: 1px solid var(--line); color: var(--muted); background: #fbfaf8; font-size: .75rem; letter-spacing: .09em; text-transform: uppercase; }
+.table td, .table th { padding: 1rem 1.1rem; vertical-align: middle; }
+.table tbody tr { border-color: #efede8; }
+.table tbody tr:hover { background: #fff9f5; }
+.table-actions { white-space: nowrap; font-size: .9rem; }
+.filter-bar { display: flex; flex-wrap: wrap; gap: .75rem; align-items: end; margin-bottom: 1.4rem; }
+.filter-field { flex: 1 1 160px; }
+.filter-field label { display: block; margin-bottom: .35rem; }
+.filter-submit { flex: 0 0 auto; }
+.form-card { max-width: 700px; }
+.form-actions { display: flex; align-items: center; gap: 1rem; margin-top: 1.25rem; }
+.detail-list dt { color: var(--muted); font-size: .78rem; letter-spacing: .08em; text-transform: uppercase; }
+.detail-list dd { font-size: 1.05rem; font-weight: 600; }
+.danger-card { border-top: 4px solid #a83c45; }
 }
 
 .form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {

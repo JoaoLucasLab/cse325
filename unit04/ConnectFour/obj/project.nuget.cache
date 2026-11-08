@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "lIkJLBa0AWc=",
+  "success": true,
+  "projectFilePath": "/Users/joaolucas/iCloud Drive (Arquivo)/Desktop/Documents/BYUI/2026/Fall 2026/dotNET/W07/ConnectFour/ConnectFour.csproj",
+  "expectedPackageFiles": [
+    "/Users/joaolucas/.nuget/packages/microsoft.aspnetcore.app.internal.assets/10.0.12/microsoft.aspnetcore.app.internal.assets.10.0.12.nupkg.sha512"
+  ],
+  "logs": []
+}

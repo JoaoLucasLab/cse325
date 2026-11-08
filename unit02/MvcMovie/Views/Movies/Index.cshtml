@@ -1,22 +1,29 @@
 @model MvcMovie.Models.MovieGenreViewModel
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Movie Library";
 }
 
-<h1>My Movies</h1>
+<div class="content-heading d-flex flex-wrap justify-content-between align-items-end gap-3">
+    <div>
+        <div class="eyebrow">Your collection</div>
+        <h1>Movie Library</h1>
+        <p class="subtitle mb-0">Find a favorite, discover something new, or add to the shelf.</p>
+    </div>
+    <a asp-action="Create" class="btn btn-primary">+ Add movie</a>
+</div>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<form asp-controller="Movies" asp-action="Index" method="get">
-    <p>
-        <select asp-for="MovieGenre" asp-items="Model.Genres">
-            <option value="">All</option>
+<form asp-controller="Movies" asp-action="Index" method="get" class="surface-card filter-bar">
+    <div class="filter-field">
+        <label asp-for="MovieGenre">Genre</label>
+        <select asp-for="MovieGenre" asp-items="Model.Genres" class="form-select">
+            <option value="">All genres</option>
         </select>
-
-        <select name="releaseYear" id="releaseYear">
-            <option value="">All</option>
+    </div>
+    <div class="filter-field">
+        <label for="releaseYear">Release year</label>
+        <select name="releaseYear" id="releaseYear" class="form-select">
+            <option value="">All years</option>
 
             @foreach (var year in Model.Movies!
                 .Select(m => m.ReleaseDate.Year)
@@ -26,12 +33,17 @@
                 <option value="@year">@year</option>
             }
         </select>
-
-        <label>Title: <input type="text" asp-for="SearchString" /></label>
-        <input type="submit" value="Filter" />
-    </p>
+    </div>
+    <div class="filter-field">
+        <label asp-for="SearchString">Title</label>
+        <input type="text" asp-for="SearchString" class="form-control" placeholder="Search titles..." />
+    </div>
+    <div class="filter-submit">
+        <input type="submit" value="Filter" class="btn btn-primary" />
+    </div>
 </form>
 
+<div class="table-shell">
 <table class="table">
     <thead>
         <tr>
@@ -50,7 +62,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.Movies![0].Rating)
             </th>
-            <th></th>
+            <th class="text-end">Actions</th>
         </tr>
     </thead>
     <tbody>
@@ -72,12 +84,15 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Rating)
                 </td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <td class="table-actions text-end">
+                    <a asp-action="Details" asp-route-id="@item.Id">View</a>
+                    <span class="text-muted mx-1">·</span>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                    <span class="text-muted mx-1">·</span>
                     <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
                 </td>
             </tr>
         }
     </tbody>
 </table>
+</div>

@@ -1,0 +1,146 @@
+@using System.Drawing
+@inject GameState State
+@inject IJSRuntime JS
+@implements IAsyncDisposable
+
+<HeadContent>
+    <style>
+        :root {
+            --board-bg: @ColorTranslator.ToHtml(BoardColor);  /** the color of the board **/
+            --player1: @ColorTranslator.ToHtml(Player1Color);      /** Player 1's piece color **/
+            --player2: @ColorTranslator.ToHtml(Player2Color);      /** Player 2's piece color **/
+        }
+    </style>
+</HeadContent>
+
+<nav>
+    @for (byte i = 0; i < 7; i++)
+    {
+        var col = i;
+        <span class="column-selector" title="Click to play a piece" @onclick="() => PlayPiece(col)">🔽</span>
+    }
+</nav>
+<article class="status">
+    @if (winnerMessage == string.Empty)
+    {
+        <div class="turn">
+            <span class="chip p@(State.PlayerTurn)"></span>
+            <strong>Player @State.PlayerTurn</strong>&nbsp;— your turn
+        </div>
+    }
+    else
+    {
+        <div class="winner p@((int)State.CheckForWin())">
+            <span class="trophy">@(State.CheckForWin() == GameState.WinState.Tie ? "🤝" : "🏆")</span>
+            @winnerMessage
+        </div>
+        <button class="reset" @onclick="ResetGame">Play again</button>
+    }
+    <button class="mute" title="@(muted ? "Unmute" : "Mute") sounds" @onclick="() => muted = !muted">@(muted ? "🔇" : "🔊")</button>
+    @if (errorMessage != string.Empty)
+    {
+        <div class="error" role="alert">⚠️ @errorMessage</div>
+    }
+</article>
+<div>
+    <div class="board">
+    @for (var i = 0; i < 42; i++)
+    {
+        <span class="container">
+            <span></span>
+        </span>
+    }
+    </div>
+    @for (var i = 0; i < 42; i++)
+    {
+       <span class="@pieces[i]"></span>
+    }
+</div>
+@code {
+    [Parameter]
+    public Color BoardColor { get; set; } = ColorTranslator.FromHtml("yellow");
+
+    [Parameter]
+    public Color Player1Color { get; set; } = ColorTranslator.FromHtml("red");
+
+    [Parameter]
+    public Color Player2Color { get; set; } = ColorTranslator.FromHtml("blue");
+
+    private string[] pieces = new string[42];
+   private string winnerMessage = string.Empty;
+   private string errorMessage = string.Empty;
+   private bool muted = false;
+   private IJSObjectReference? sounds;
+
+    private async Task PlayPiece(byte col)
+   {
+      errorMessage = string.Empty;
+      byte landingRow;
+      try
+      {
+         var player = State.PlayerTurn;
+         var turn = State.CurrentTurn;
+         landingRow = State.PlayPiece(col);
+         pieces[turn] = $"player{player} col{col} drop{landingRow}";
+      }
+      catch (ArgumentException ex)
+      {
+         errorMessage = ex.Message;
+         await PlaySound("playError");
+         return;
+      }
+
+      winnerMessage = State.CheckForWin() switch
+      {
+         GameState.WinState.Player1_Wins => "Player 1 Wins!",
+         GameState.WinState.Player2_Wins => "Player 2 Wins!",
+         GameState.WinState.Tie => "It's a tie!",
+         _ => ""
+      };
+
+      await PlaySound("playDrop", landingRow);
+      if (State.CheckForWin() == GameState.WinState.Tie) await PlaySound("playTie", landingRow);
+      else if (winnerMessage != string.Empty) await PlaySound("playWin", landingRow);
+   }
+
+    async Task ResetGame()
+    {
+        State.ResetBoard();
+        pieces = new string[42];
+        winnerMessage = string.Empty;
+        errorMessage = string.Empty;
+        await PlaySound("playReset");
+    }
+
+    private async Task PlaySound(string name, params object[] args)
+    {
+        if (muted || sounds is null) return;
+        await sounds.InvokeVoidAsync(name, args);
+    }
+
+    protected override void OnInitialized()
+    {
+        State.ResetBoard();
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            sounds = await JS.InvokeAsync<IJSObjectReference>("import", "./Components/Board.razor.js");
+        }
+    }
+
+    public async ValueTask DisposeAsync()
+    {
+        if (sounds is null) return;
+        try
+        {
+            await sounds.DisposeAsync();
+        }
+        catch (JSDisconnectedException)
+        {
+            // The browser is already gone, nothing to clean up
+        }
+    }
+}
